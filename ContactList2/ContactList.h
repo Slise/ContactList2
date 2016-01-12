@@ -16,5 +16,7 @@
 
 -(void)addContact:(Contact *)newContact;
 -(void)listAllContacts;
+//-(id)objectAtIndex:(NSUInteger)anIndex;
+
 
 @end

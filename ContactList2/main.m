@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
         
         while (quit == 1) {
             
-            NSString *prompt = @"What would you like do next?\n new - Create a new contact\n list - List all contacts\n quit - exit";
+            NSString *prompt = @"What would you like do next?\n new - Create a new contact\n list - List all contacts\n show - show detail of a contact\n quit - exit";
             NSString* userInput =  [inputCollector inputForPrompt:prompt];
             
             if ([userInput isEqualToString:@"new"]) {
@@ -34,6 +34,17 @@ int main(int argc, const char * argv[]) {
             }
             else if ([userInput isEqualToString:@"list"]) {
                 [storedInfo listAllContacts];
+                
+            }
+            else if ([userInput isEqualToString:@"show"]) {
+                NSString* userInput =  [inputCollector inputForPrompt:@"Please type a number starting from 0:"];
+                int num = [userInput intValue];
+                if(num < [storedInfo.storedContacts count]) {
+                    Contact *contact = [storedInfo.storedContacts objectAtIndex:num];
+                    NSLog(@"%@, %@", contact.name, contact.email);
+                }else{
+                    NSLog(@"Contact not found.");
+                }
                 
             }
             else if ([userInput isEqualToString:@"quit"]){
